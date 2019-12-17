@@ -19,10 +19,36 @@ public class PokerCord extends ConstraintLayout {
     }
 
     public PokerCord(Context context, AttributeSet attrs){
-        super(context);
+        super(context, attrs);
         inflate(context, R.layout.poker, this);
         image = findViewById(R.id.type);
         left = findViewById(R.id.left_num);
         right = findViewById(R.id.right_num);
+    }
+
+    public int getValue(){
+        return value;
+    }
+
+    public void setValue(int value){
+        this.value = value;
+        int flowertype = value/13;
+        int point = (value%13)+1;
+        switch (flowertype){
+            case 0:
+                image.setImageResource(R.drawable.clubs);
+                break;
+            case 1:
+                image.setImageResource(R.drawable.diamonds);
+                break;
+            case 2:
+                image.setImageResource(R.drawable.hearts);
+                break;
+            case 3:
+                image.setImageResource(R.drawable.spades);
+                break;
+        }
+        left.setText(point+"");
+        right.setText(point+"");
     }
 }
